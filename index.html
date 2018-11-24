@@ -1,0 +1,218 @@
+<html>
+<script>
+    var game__currency = 0;
+    var game__bot=0;
+
+    
+    function game__update(){
+        document.getElementById("game__currency").value = game__currency;
+        document.title = game__currency + " |PAWKO.ML";
+        document.getElementById("game__bot").innerHTML = game__bot;
+        document.getElementById("game__bot_cost").innerHTML = ((game__bot+1)*12);
+
+    }
+    function timer() {
+        game__currency = game__currency + game__bot;
+        game__update()
+
+    }
+    setInterval(timer, 1000)
+    function add()
+      {
+          game__currency = game__currency + 1;
+          game__update()
+      }
+</script>
+    <head><title>0 |PAWKO.ML</title>
+        <link rel="Shortcut icon" href="images/pageic.png" />
+       <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    </head>
+    <style>
+      
+    body{
+        background-color: #202020;
+       font-size: 11px;
+       font-family: 'Press Start 2P', cursive;
+        
+    }
+    .console{
+        
+        display: block;
+        width: 470px;
+        height: 700px;
+        float: left
+    }
+
+    .MINE_6{
+       position: absolute;
+       left: 382px;
+       top: 154px;;
+    }  
+    .MINE_6:active {
+  transform: translateY(-1px);
+}
+      .MINE_9{
+       position: absolute;
+       left: 382px;
+       top: 184px;
+    }
+    .MINE_9:active {
+  transform: translateY(-1px);
+}
+    .mine_11{
+        position: absolute;
+       left: 382px;
+       top: 214px;
+    }
+    .mine_11:active {
+  transform: translateY(-1px);
+}
+    .mine_14{
+        position: absolute;
+        left: 175px;
+        top: 369px;
+    }
+    .mine_14:active {
+  transform: translateY(-1px);
+}
+    .mine_16{
+        position: absolute;
+        left: 101px;
+        top: 369px;
+    }
+    .mine_16:active {
+  transform: translateY(-1px);
+}
+    .mine_21{
+        position: absolute;
+        left: 160px;
+        top: 456px;
+    }
+    .mine_21:active {
+  transform: translateY(-1px);
+}
+    .mine_23{
+        position: absolute;
+        left: 83px;
+        top: 456px;
+    }
+    .mine_23:active {
+  transform: translateY(-1px);
+}
+    .mine_28{
+        position: absolute;
+        left: 50px;
+        top: 645px;
+    }
+    .mine_gif{
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        height: 252px;
+        width: 252px;
+    }
+    .currency{
+        position: absolute;
+        left: 238px;
+        top: 440px;
+    }
+    .booster {
+        position: absolute;
+        left: 80px;
+        top: 516px;  
+    }
+    .price{
+        position: absolute;
+        left: 80px;
+        top: 536px;  
+
+    }
+    .total{
+        position: absolute;
+        left: 80px;
+        top: 556px;  
+
+    }
+    .rules{
+        position: absolute;
+        left: 558px;
+        top: 48px;
+        font-size: 13px;
+    color:#202020;
+    }
+    </style>
+<body>  
+    <section class="console">
+        
+                  <img  class="gameboy" src="images/mine.png" alt="">
+        
+                              <audio id="audio_play">
+                              <source src="auu.mp3" type="audio/ogg" />
+                            <source src="auu.mp3" type="audio/mpeg" />
+                                 </audio>
+            <img class="mine_6" src="images/mine_06.png" onClick="document.getElementById('audio_play').play(); return false;" />
+            <img class="mine_9" src="images/mine_09.png" onClick="document.getElementById('audio_play').pause(); return false;" />
+            <img class="mine_11" src="images/mine_11.png" onClick="document.getElementById('audio_play').play(); return false;" />
+            <a href=# onclick="game__save()"><img class="mine_14" src="images/mine_14.png" alt=""></a>
+            <a href=# onclick="game__load()"><img class="mine_16" src="images/mine_16.png" alt=""></a>
+            <a href="#" onClick="game__bot_buy()">
+            <img class="mine_21" src="images/mine_21.png" alt=""></a>
+         <p class="booster"> BUY SAUSAGE BOOSTER</p>
+         <a href=# onclick="add()"> <img class="mine_23" src="images/mine_23.png" alt=""></a>
+         <a href="https://github.com/pavuloff" target="_blank"><img class="mine_28"  src="images/mine_28.png" alt=""></a>
+        <img class="mine_gif" src="images/screen.gif" alt="">     
+
+       
+        <p class="currency">SAUSAGES:<output id="game__currency">0</output></p>
+        <p class="price">SAUSAGE BOOSTER PRICE:<output id="game__bot_cost">12</output></p>
+        <p class="total">TOTAL BONUS:<output id="game__bot">0</output></p>
+    
+    </section>
+    <img class="paper" src="images/paper.png">
+        <div class="RULES">
+        <h2>RULES</h2>
+        <p>PICK BUTTON =<br/> +1 <a style="color:#9d5d41">SAUSAGE</a></p>
+        <p><a style="color:#2982bd">BOOST</a> BUTTON <br/><a style="color:#9d5d41">SAUSAGE</a> <a style="color:#2982bd">BOOSTER</a> <br>
+            FOR EVER <a style="color:#2982bd">BOOSTER</a>    <br/>YOU WILL GET 
+        <br> 1 <a style="color:#9d5d41">SAUSAGE</a> PER SECOND
+        </p>
+        <p>TRY COLOR BUTTONS ;)</p>
+        <p>EVENTS INC.</p>
+        <p> HAVE FUN</p>
+        <br/>
+        <p>~Pavuloff</p>
+    </div>
+      <script>
+
+    function game__bot_buy() {
+            if (game__currency >= ((game__bot+1) *12))   {
+                game__currency = game__currency - ((game__bot+1) *12);
+                game__bot = game__bot + 1;
+                game__update()
+            }
+
+    }
+     function game__save(){
+         localStorage.setItem("game__currency", game__currency);
+         localStorage.setItem("game__bot", game__bot);
+     }
+     function game__load(){
+         game__currency = localStorage.getItem("game__currency");
+         game__currency = parseInt(game__currency);
+
+         game__bot = localStorage.getItem("game__bot");
+         game__bot = parseInt(game__bot);
+
+         document.getElementById('game__bot_cost').value = (game__bot * 12);
+        document.getElementById('game__bot').value =   game__bot;
+         document.getElementById('game__currency').value = game__currency;
+         document.title = game__currency + " |PAWKO.ML";
+   ;
+     }
+
+      </script>
+
+
+</body>
+    </html>
