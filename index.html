@@ -198,6 +198,7 @@
          localStorage.setItem("game__bot", game__bot);
      }
      function game__load(){
+         if(game__currency > 1){
          game__currency = localStorage.getItem("game__currency");
          game__currency = parseInt(game__currency);
 
@@ -208,8 +209,8 @@
         document.getElementById('game__bot').value =   game__bot;
          document.getElementById('game__currency').value = game__currency;
          document.title = game__currency + " |PAWKO.ML";
-   ;
-     }
+   
+     }}
 
       </script>
 
