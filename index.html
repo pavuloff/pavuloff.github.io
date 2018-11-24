@@ -194,9 +194,10 @@
 
     }
      function game__save(){
+        if(game__currency > 1){
          localStorage.setItem("game__currency", game__currency);
          localStorage.setItem("game__bot", game__bot);
-     }
+     }}
      function game__load(){
          if(game__currency > 1){
          game__currency = localStorage.getItem("game__currency");
