@@ -17,7 +17,7 @@
 
     }
     setInterval(timer, 1000)
-    function add()
+    function game__add()
       {
           game__currency = game__currency + 1;
           game__update()
@@ -130,8 +130,8 @@
     }
     .total{
         position: absolute;
-        left: 80px;
-        top: 556px;  
+        left: 78px;
+        top: 576px;  
 
     }
     .rules{
@@ -140,6 +140,10 @@
         top: 48px;
         font-size: 13px;
     color:#202020;
+    }
+    .paper{
+        position: absolute;
+
     }
     </style>
 <body>  
@@ -159,13 +163,13 @@
             <a href="#" onClick="game__bot_buy()">
             <img class="mine_21" src="images/mine_21.png" alt=""></a>
          <p class="booster"> BUY SAUSAGE BOOSTER</p>
-         <a href=# onclick="add()"> <img class="mine_23" src="images/mine_23.png" alt=""></a>
+         <a href=# onclick="game__add()"> <img class="mine_23" src="images/mine_23.png" alt=""></a>
          <a href="https://github.com/pavuloff" target="_blank"><img class="mine_28"  src="images/mine_28.png" alt=""></a>
         <img class="mine_gif" src="images/screen.gif" alt="">     
 
        
         <p class="currency">SAUSAGES:<output id="game__currency">0</output></p>
-        <p class="price">SAUSAGE BOOSTER PRICE:<output id="game__bot_cost">12</output></p>
+        <p class="price">SAUSAGE BOOSTER <br /> <br /> PRICE:<output id="game__bot_cost">12</output></p>
         <p class="total">TOTAL BONUS:<output id="game__bot">0</output></p>
     
     </section>
@@ -212,7 +216,10 @@
          document.title = game__currency + " |PAWKO.ML";
    
      }
+ 
 
+
+  
       </script>
 
 
