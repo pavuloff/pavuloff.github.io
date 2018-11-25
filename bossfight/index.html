@@ -3,32 +3,20 @@
     
     var game__boss_hp = 100;
     var game__coin = 0;
+    var game__health = 100;
     function game__update(){
-        document.getElementById("game__dmg_value").value = game__dmg_value;
+        document.getElementById("game__dmg_value").value = game__dmg_value + "+(0-3)";
         document.title = game__boss_hp + " |PAWKO.ML";
         document.getElementById("game__boss_hp").innerHTML = game__boss_hp;
+        document.getElementById("game__health").innerHTML = game__health + "%";
         document.getElementById("game__coin").innerHTML = game__coin.toFixed(2);;
-        document.getElementById("game__weapon_cost").innerHTML = game__weapon_cost.toFixed(2);;
-        if (game__boss_hp < 0){
-            game__boss_hp = 2137;
-                 document.getElementById('boss1').style.display="none";
-                 document.getElementById('boss2').style.display="block";
-                 document.getElementById("game__boss_hp").innerHTML = game__boss_hp;
-            alert('CONGRATULATIONS! You have kill Mighty Mage! Oh wait, what was that? It is WARRIOR FROM 2137CLAN?! Kill him');
-        }
+        document.getElementById("game__weapon_cost").innerHTML = game__weapon_cost.toFixed(2);
+      
 
     }
+   
 
-    function game__dmg()
-      {
-          game__boss_hp = game__boss_hp - game__dmg_value;
-          document.getElementById('game__boss_hp').value =   game__boss_hp;
-          game__coin = game__coin + 0.5;
-          document.getElementById('game__coin').value =   game__coin.toFixed(2);;
-          game__update();
-          
-         
-      }
+
 </script>
     <head><title>0 |PAWKO.ML</title>
         <link rel="Shortcut icon" href="images/pageic.png" />
@@ -131,12 +119,19 @@
     .currency{
         position: absolute;
         left: 238px;
-        top: 440px;
+        top: 445px;
+        color:maroon;
+    }
+    .health{
+        position: absolute;
+        left: 237px;
+        top: 465px;
+        color:green;
     }
     .currency1{
         position: absolute;
         left: 237px;
-        top: 465px;
+        top: 485px;
     }
     
     .booster {
@@ -147,13 +142,13 @@
     .price{
         position: absolute;
         left: 80px;
-        top: 536px;  
+        top: 546px;  
 
     }
     .total{
         position: absolute;
         left: 78px;
-        top: 576px;  
+        top: 586px;  
         color: crimson;
 
     }
@@ -175,12 +170,26 @@
         width: 90px;
         display: none;
     }
+    .potion{
+        font-family: 'Press Start 2P', cursive;
+        position: absolute;
+        left: 76px;
+        top: 520px;
+        font-size: 11px; 
+        border: 4px solid #597481;   
+        background-color: #595959;
+        color: #a5dcf7;
+
+    }
+    .potion:active {
+  transform: translateY(2px);
+}
     </style>
 <body>  
     <section class="console">
         
                   <img  class="gameboy" src="images/mine.png" alt="">
-                  <
+                  
         
                               <audio id="audio_play">
                               <source src="auu.mp3" type="audio/ogg" />
@@ -201,10 +210,11 @@
       
 
         <p class="currency">BOSS HP:<output id="game__boss_hp">100%</output></p>
+        <p class="health">YOUR HP:<output id="game__health">100%</output></p>
         <p class="currency1">COINS:<output id="game__coin">0.0</output></p>
-        <p class="price">NEW WEAPON <br /> <br /> PRICE:<output id="game__weapon_cost">21.37</output> COINS</p>
-        <p class="total">YOUR DAMAGE:<output id="game__dmg_value">1</output></p>
-    
+        <p class="price">WEAPON UPGRADE <br /> <br /> PRICE:<output id="game__weapon_cost">10.00</output> COINS</p>
+        <p class="total">YOUR DAMAGE:<output id="game__dmg_value">1+(0-3)</output></p>
+        <a class="potion" href=# onclick="game__health_potion();"> HEALING POTION 10C</a>
     </section>
     <img class="paper" src="images/paper.png">
         <div class="RULES">
@@ -222,18 +232,19 @@ wait for more content!</small>
 
     
       <script>
-        var game__weapon_cost = 21.37;
+        var game__weapon_cost = 10;
         var game__dmg_value = 1;
+        var game__coin = 0;
+        var game__lvl = 0;
+        var game__boss_dmg = 2
     function game__weapon_upgrade() {
             if (game__coin >= game__weapon_cost)  {
                
                 game__coin = game__coin - game__weapon_cost;
-                game__weapon_cost = game__weapon_cost * 1.5;
+                game__weapon_cost = game__weapon_cost * 1.2;
                 game__dmg_value = game__dmg_value + 1.5;
                 game__update()
-            }
-
-    }
+            } }
      function game__save(){
         if(game__currency > 1){
          localStorage.setItem("game__currency", game__currency);
@@ -253,9 +264,63 @@ wait for more content!</small>
          document.title = game__currency + " |PAWKO.ML";
    
      }
- 
-   
+     function game__dmg()
+      {
+          game__boss_hp = game__boss_hp - game__dmg_value - Math.floor((Math.random() * 3) + 0);
+          document.getElementById('game__boss_hp').value =   game__boss_hp;
+          game__coin = game__coin + 2 ;
+          document.getElementById('game__coin').value =   game__coin.toFixed(2);;
+          if((game__boss_hp <=0) && (game__lvl==1)){
+              game__boss_hp = 0;
+              document.getElementById("game__boss_hp").innerHTML = game__boss_hp;
+                alert("CONGRATULATIONS! MORE CONENT SOON!");
+                return 0;
+            }
+          if(game__boss_hp <= 0){
+            game__boss_switch();
+          }
+          game__boss1_dmg();
+          game__update();
+          
+         
+      }
+
+     
+     
+     function game__boss_switch(){
+            game__boss_hp = 1500;
+                    game__boss_dmg = 3;
+                    game__coin = 2;
+                 document.getElementById('boss1').style.display="none";
+                 document.getElementById('boss2').style.display="block";
+                 document.getElementById("game__boss_hp").innerHTML = game__boss_hp;
+                 game__lvl = game__lvl +1;
+            alert('CONGRATULATIONS! You have kill Mighty Mage! Oh wait, what was that? It is WARRIOR FROM 2137CLAN?! Kill him');
+
+
+        }
     
+    function game__boss1_dmg(){
+            game__health = game__health - game__boss_dmg - Math.floor((Math.random() * 2) + 0);
+            if (game__health <= 0)
+            {
+                alert("YOU HAVE BEEN KILLED! BUt don't worry, you have another chance!");
+                window.location.reload(true);
+            }
+            document.getElementById("game__health").innerHTML = game__health + "%";
+     }
+    function game__health_potion(){
+        if (game__coin >= 10)
+        {
+            
+            game__coin = game__coin - 10;
+            game__health = game__health + 20;
+            if(game__health >= 100){
+                game__health = 100; }
+            game__update();
+        }
+
+    }
 
   
       </script>
