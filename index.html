@@ -144,6 +144,28 @@
     .paper{
         position: absolute;
     }
+    #card{
+        position: absolute;
+        left: 570px;
+        top: 460px;
+        height: 90px;
+        width: 90px;
+        display: none;
+    }
+    .switch{
+        font-family: 'Press Start 2P', cursive;
+        position: absolute;
+        left: 76px;
+        top: 606px;
+        font-size: 11px; 
+        border: 4px solid #597481;   
+        background-color: #595959;
+        color: #a5dcf7;
+
+    }
+    .switch:active {
+  transform: translateY(2px);
+}
     </style>
 <body>  
     <section class="console">
@@ -170,6 +192,7 @@
         <p class="currency">SAUSAGES:<output id="game__currency">0</output></p>
         <p class="price">SAUSAGE BOOSTER <br /> <br /> PRICE:<output id="game__bot_cost">12</output></p>
         <p class="total">TOTAL BONUS:<output id="game__bot">0</output></p>
+        <a class="switch" href=# onclick="game__switch();"> SELL 1000 SAUSAGES</a>
     
     </section>
     <img class="paper" src="images/paper.png">
@@ -183,9 +206,10 @@
         <p>TRY COLOR BUTTONS ;)</p>
         <p>EVENTS INC.</p>
         <p> HAVE FUN</p>
-        <br/>
+        <small>update 2.0 *SECRET*</small>
         <p>~Pavuloff</p>
     </div>
+    <a  href="bossfight/index.html"><img id='card' src="images/cardridge.png"></a>
       <script>
 
     function game__bot_buy() {
@@ -215,7 +239,13 @@
          document.title = game__currency + " |PAWKO.ML";
    
      }
- 
+     function game__switch(){
+         if (game__currency >= 1000){
+             game__currency = game__currency - 1000;
+             document.getElementById('card').style.display="block";
+
+         }
+     }
 
 
   

@@ -1,0 +1,262 @@
+<html>
+<script>
+    
+    var game__boss_hp = 100;
+    var game__coin = 0;
+    function game__update(){
+        document.getElementById("game__dmg_value").value = game__dmg_value;
+        document.title = game__boss_hp + " |PAWKO.ML";
+        document.getElementById("game__boss_hp").innerHTML = game__boss_hp;
+        document.getElementById("game__coin").innerHTML = game__coin.toFixed(2);;
+        document.getElementById("game__weapon_cost").innerHTML = game__weapon_cost.toFixed(2);;
+        if (game__boss_hp < 0){
+            game__boss_hp = 2137;
+                 document.getElementById('boss1').style.display="none";
+                 document.getElementById('boss2').style.display="block";
+                 document.getElementById("game__boss_hp").innerHTML = game__boss_hp;
+            alert('CONGRATULATIONS! You have been kill Mighty Mage! Oh wait, what was that? It is WARRIOR FROM 2137CLAN?! Kill him');
+        }
+
+    }
+
+    function game__dmg()
+      {
+          game__boss_hp = game__boss_hp - game__dmg_value;
+          document.getElementById('game__boss_hp').value =   game__boss_hp;
+          game__coin = game__coin + 0.5;
+          document.getElementById('game__coin').value =   game__coin.toFixed(2);;
+          game__update();
+          
+         
+      }
+</script>
+    <head><title>0 |PAWKO.ML</title>
+        <link rel="Shortcut icon" href="images/pageic.png" />
+       <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    </head>
+    <style>
+      
+    body{
+        background-color: #202020;
+       font-size: 11px;
+       font-family: 'Press Start 2P', cursive;
+        
+    }
+    .console{
+        
+        display: block;
+        width: 470px;
+        height: 700px;
+        float: left
+    }
+
+    .MINE_6{
+       position: absolute;
+       left: 382px;
+       top: 154px;;
+    }  
+    .MINE_6:active {
+  transform: translateY(-1px);
+}
+      .MINE_9{
+       position: absolute;
+       left: 382px;
+       top: 184px;
+    }
+    .MINE_9:active {
+  transform: translateY(-1px);
+}
+    .mine_11{
+        position: absolute;
+       left: 382px;
+       top: 214px;
+    }
+    .mine_11:active {
+  transform: translateY(-1px);
+}
+    .mine_14{
+        position: absolute;
+        left: 175px;
+        top: 369px;
+    }
+    .mine_14:active {
+  transform: translateY(-1px);
+}
+    .mine_16{
+        position: absolute;
+        left: 101px;
+        top: 369px;
+    }
+    .mine_16:active {
+  transform: translateY(-1px);
+}
+    .mine_21{
+        position: absolute;
+        left: 160px;
+        top: 456px;
+    }
+    .mine_21:active {
+  transform: translateY(-1px);
+}
+    .mine_23{
+        position: absolute;
+        left: 83px;
+        top: 456px;
+    }
+    .mine_23:active {
+  transform: translateY(-1px);
+}
+    .mine_28{
+        position: absolute;
+        left: 50px;
+        top: 645px;
+    }
+    #boss1{
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        height: 252px;
+        width: 252px;
+        display: block;
+    }
+    #boss2{
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        height: 252px;
+        width: 252px;
+        display: none;
+    }
+    .currency{
+        position: absolute;
+        left: 238px;
+        top: 440px;
+    }
+    .currency1{
+        position: absolute;
+        left: 237px;
+        top: 465px;
+    }
+    
+    .booster {
+        position: absolute;
+        left: 80px;
+        top: 516px;  
+    }
+    .price{
+        position: absolute;
+        left: 80px;
+        top: 536px;  
+
+    }
+    .total{
+        position: absolute;
+        left: 78px;
+        top: 576px;  
+        color: crimson;
+
+    }
+    .rules{
+        position: absolute;
+        left: 558px;
+        top: 48px;
+        font-size: 13px;
+    color:#202020;
+    }
+    .paper{
+        position: absolute;
+    }
+    #card{
+        position: absolute;
+        left: 570px;
+        top: 460px;
+        height: 90px;
+        width: 90px;
+        display: none;
+    }
+    </style>
+<body>  
+    <section class="console">
+        
+                  <img  class="gameboy" src="images/mine.png" alt="">
+                  <
+        
+                              <audio id="audio_play">
+                              <source src="auu.mp3" type="audio/ogg" />
+                            <source src="auu.mp3" type="audio/mpeg" />
+                                 </audio>
+            <img class="mine_6" src="images/mine_06.png" onClick="document.getElementById('audio_play').play(); return false;" />
+            <img class="mine_9" src="images/mine_09.png" onClick="document.getElementById('audio_play').pause(); return false;" />
+            <img class="mine_11" src="images/mine_11.png" onClick="document.getElementById('audio_play').play(); return false;" />
+            <a href=# onclick="game__save()"><img class="mine_14" src="images/mine_14.png" alt=""></a>
+            <a href=# onclick="game__load()"><img class="mine_16" src="images/mine_16.png" alt=""></a>
+            <a href="#" onClick="game__weapon_upgrade();">
+            <img class="mine_21" src="images/mine_21.png" alt=""></a>
+ 
+         <a href=# onclick="game__dmg()"> <img class="mine_23" src="images/mine_23.png" alt=""></a>
+         <a href="https://github.com/pavuloff" target="_blank"><img class="mine_28"  src="images/mine_28.png" alt=""></a>
+        <img id="boss1" src="images/mage.gif" alt="">     
+        <img id="boss2" src="images/warrior.gif" alt="">   
+      
+
+        <p class="currency">BOSS HP:<output id="game__boss_hp">100%</output></p>
+        <p class="currency1">COINS:<output id="game__coin">0.0</output></p>
+        <p class="price">NEW WEAPON <br /> <br /> PRICE:<output id="game__weapon_cost">21.37</output> COINS</p>
+        <p class="total">YOUR DAMAGE:<output id="game__dmg_value">1</output></p>
+    
+    </section>
+    <img class="paper" src="images/paper.png">
+        <div class="RULES">
+        <h2>RULES</h2>
+        <p>Im so tired... <br /> so just have fun
+        </a></p>
+<br/><br/>
+<small>It is not <br />complete version!<br/>
+wait for more content!</small>
+        <p>~Pavuloff</p>
+    </div>
+    <br/>
+    
+      <script>
+        var game__weapon_cost = 21.37;
+        var game__dmg_value = 1;
+    function game__weapon_upgrade() {
+            if (game__coin >= game__weapon_cost)  {
+               
+                game__coin = game__coin - game__weapon_cost;
+                game__weapon_cost = game__weapon_cost * 1.5;
+                game__dmg_value = game__dmg_value + 1.5;
+                game__update()
+            }
+
+    }
+     function game__save(){
+        if(game__currency > 1){
+         localStorage.setItem("game__currency", game__currency);
+         localStorage.setItem("game__bot", game__bot);
+     }}
+     function game__load(){
+         
+         game__currency = localStorage.getItem("game__currency");
+         game__currency = parseInt(game__currency);
+
+         game__bot = localStorage.getItem("game__bot");
+         game__bot = parseInt(game__bot);
+
+         document.getElementById('game__bot_cost').value = (game__bot * 12);
+        document.getElementById('game__bot').value =   game__bot;
+         document.getElementById('game__currency').value = game__currency;
+         document.title = game__currency + " |PAWKO.ML";
+   
+     }
+ 
+   
+    
+
+  
+      </script>
+
+
+</body>
+    </html>
